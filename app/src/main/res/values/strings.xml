@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Beermeter</string>
+    <string name="action_settings">Settings</string>
+    <string name="add_beer">Add a beer</string>
+    <string name="edit_beer">Edit beer</string>
+    <string name="ok">OK</string>
+    <string name="dialog_degree">Degree (%) :</string>
+    <string name="dialog_price">Price (€) :</string>
+    <string name="dialog_name">Beer Name :</string>
+    <string name="dialog_volume">Volume (cL) :</string>
+    <string name="invalid_number">Invalid Number provided</string>
+    <string name="invalid_name">Invalid Beer Name provided</string>
+    <string name="no_beer">No beer Saved. Feel free to add one !</string>
+    <string name="delete">Delete</string>
+</resources>
