@@ -8,14 +8,12 @@ public class Beer {
     private float price;
     private float volume;
     private float degree;
-    private float rentabilty;
 
     public Beer(String name, float price, float volume, float degree) {
         this.name = name;
         this.price = price;
         this.volume = volume;
         this.degree = degree;
-        this.rentabilty =  ((degree * volume) / price)  / 10;
     }
 
     public float getVolume() {
@@ -50,8 +48,8 @@ public class Beer {
         this.degree = degree;
     }
 
-    public float getRentabilty() {
-        return rentabilty;
+    public float getProfitability() {
+        return ((degree * volume) / price)  / 10;
     }
 
     @Override
@@ -61,7 +59,6 @@ public class Beer {
                 ", price=" + price +
                 ", volume=" + volume +
                 ", degree=" + degree +
-                ", rentabilty=" + rentabilty +
                 '}';
     }
 

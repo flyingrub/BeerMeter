@@ -49,7 +49,7 @@ public class AllBeerAdapter extends RecyclerView.Adapter<AllBeerAdapter.ViewHold
     public void onBindViewHolder(ViewHolder holder, final int position) {
         Beer beer = beers.get(position);
         holder.beerName.setText(beer.getName());
-        holder.beerRentability.setText("" + beer.getRentabilty());
+        holder.beerRentability.setText("" + beer.getProfitability());
     }
 
     // Return the size of your dataset (invoked by the layout manager)
