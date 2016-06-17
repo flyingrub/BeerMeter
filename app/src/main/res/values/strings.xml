@@ -12,4 +12,12 @@
     <string name="invalid_name">Invalid Beer Name provided</string>
     <string name="no_beer">No beer Saved. Feel free to add one !</string>
     <string name="delete">Delete</string>
+    <string name="app_info">BeerMeter, how to get drunk?</string>
+    <string name="source_code">Source Code</string>
+    <string name="source_code_summary">Available on GitHub</string>
+    <string name="github">https://github.com/flyingrub/BeerMeter</string>
+    <string name="donate">Donate!</string>
+    <string name="donate_summary">To flyingrub who basically did all the work</string>
+     <string name="doante_url" translatable="false">https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=6DE8SFMJKRVK2</string>
+
 </resources>
