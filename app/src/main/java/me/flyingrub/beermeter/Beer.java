@@ -54,12 +54,11 @@ public class Beer {
 
     @Override
     public String toString() {
-        return "Beer{" +
-                "name='" + name + '\'' +
-                ", price=" + price +
-                ", volume=" + volume +
-                ", degree=" + degree +
+        return "{" +
+                "name:'" + name + '\'' +
+                ", price:" + price +
+                ", volume:" + volume +
+                ", degree:" + degree +
                 '}';
     }
-
 }
