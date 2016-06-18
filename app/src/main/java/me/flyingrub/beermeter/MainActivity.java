@@ -1,5 +1,6 @@
 package me.flyingrub.beermeter;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -21,7 +22,15 @@ import android.widget.TextView;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.lang.reflect.Type;
 import java.nio.charset.IllegalCharsetNameException;
 import java.util.ArrayList;
 
@@ -50,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(getApplicationContext());
         recyclerView.addItemDecoration(itemDecoration);
 
-        beers = new ArrayList<>(); // TO DO RETRIEVE SAVED BEER
+        beers = load();
 
         if (beers.size() == 0) {
             emptyView.setVisibility(View.VISIBLE);
@@ -188,10 +197,11 @@ public class MainActivity extends AppCompatActivity {
         allBeerAdapter.SetOnItemClickListener(new AllBeerAdapter.OnItemClickListener() {
 
             @Override
-            public void onItemClick(View v , int position) {
+            public void onItemClick(View v, int position) {
                 showEditBeeDialog(position);
             }
         });
+        save();
     }
 
     @Override
@@ -216,5 +226,41 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public ArrayList<Beer> load(){
+        FileInputStream inputStream;
+        StringBuilder json = new StringBuilder();
+        try {
+            inputStream = openFileInput("beermeter.save");
+            InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                json.append(line);
+            }
+            inputStream.close();
+
+            Gson gson = new Gson();
+            Type collectionType = new TypeToken<ArrayList<Beer>>() {
+            }.getType();
+            ArrayList<Beer> beers = gson.fromJson(json.toString(), collectionType);
+            return beers;
+        } catch (Exception e) {
+            return new ArrayList<Beer>();
+        }
+    }
+
+
+
+    public void save(){
+        FileOutputStream outputStream;
+        try {
+            outputStream = openFileOutput("beermeter.save", Context.MODE_PRIVATE);
+            outputStream.write(beers.toString().getBytes());
+            outputStream.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
